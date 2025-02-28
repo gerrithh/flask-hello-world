@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello</title>
-    <h1>Hello, {{ name }}!</h1>
-<p>You are {{ age }} years old.</p>
+    <title>Ask AI</title>
+
+    <h1>Hello Friend</h1>
+<p>How can I help you today?</p>
 <form method="POST">
-    <input name="Key">
-    <input type="submit"  value="Name" />
+<!--    <input name="Key">-->
+<!--    <input type="submit"  value="Name" />-->
+    <textarea name="QuestionBox" rows="10" cols="50"></textarea>
+  <br>
+  <input type="submit" value="Ask">
 </form>
+
+<textarea name="AnswerBox" rows="4" cols="50">Your Question: {{ Question }}
+    My answer: {{ Answer }} </textarea>
 </head>
 <body>
 

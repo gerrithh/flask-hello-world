@@ -2,6 +2,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import Flask, render_template, request
 import os
+from askai import question2answer
 
 app = Flask(__name__)
 
@@ -16,21 +17,29 @@ mydb = client["data"]
 mycol = mydb["FAQ"]
 
 
+## Add Question and Answer Functionality
+# make text field and output Big Enough
+# add model and temperature options
+# upload Document?
+#
+
 @app.route('/',methods = ['POST', 'GET'])
 def hello_world():
     context = {
-        'name': 'test',
-        'age': '35'
+        'Question': '',
+        'Answer': '42'
     }
     if request.method == 'POST':
         result = request.form.to_dict()
+        question = result['QuestionBox']
+        answer = question2answer(question)
+        # answer = 30
         context = {
-            'name': result['Key'],
-            'age': '35'
+            'Question': question,
+            'Answer': answer
         }
-        mydict = {"name": result['Key'], "address": "Highway 37"}
-        x = mycol.insert_one(mydict)
-        print(x)
+        x = mycol.insert_one(context)
+        # print(x)
     return render_template('hello_world.html', **context)
 
 @app.route('/chart')
