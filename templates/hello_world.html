@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Ask AI</title>
 
     <h1>Hello Friend</h1>
@@ -14,7 +15,7 @@
   <input type="submit" value="Ask">
 </form>
 
-<textarea name="AnswerBox" rows="4" cols="50">Your Question: {{ Question }}
+<textarea name="AnswerBox" rows="10" cols="50">Your Question: {{ Question }}
     My answer: {{ Answer }} </textarea>
 </head>
 <body>

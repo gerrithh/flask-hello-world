@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 import os
 from askai import question2answer
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 api_key = os.getenv('LLM_API_KEY')
 uri = os.getenv('MONGO_URI')
